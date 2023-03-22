@@ -1,0 +1,37 @@
+#lang plait
+#| Def function of 3d power |#
+
+(define (3rd-power num)
+  (* (* num num) num) )
+
+;(test <expr> <output>)
+(test (3rd-power 17) 4913)
+(test (3rd-power 0) 0)
+
+(define (==> [ sunny : Boolean ] [friday : Boolean]) : Boolean
+  (or (not sunny) friday))
+
+(test (==> #t #t) #t)
+(test (==> #t #f) #f)
+(test (==> #f #t) #t)
+(test (==> #f #f) #t)
+
+(define-type Shape
+  (circle [radius : Number])
+  (square [length : Number])
+  (rect   [length : Number] [olength : Number]) )
+
+(define (get-area [me-shape :  Shape])
+  (type-case Shape me-shape
+  [(circle r) (* (* r r) 3.14)]
+  [(square l) (* l l)]
+  [(rect l ol) (* ol l)]
+  ))
+
+(test (get-area (circle 1)) 3.14)
+(test (get-area (square 1)) 1)
+(test (get-area (rect 2 3)) 6)
+
+
+
+  

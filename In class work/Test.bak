@@ -1,0 +1,14 @@
+#lang plait
+#|PROBLEM 1
+returns a list containing n copies of x|#
+(define (duple [n : Number] [x : List])
+  (cond
+    [(empty? x) x]
+    [(cons? x) (* (n x))] ))
+
+(test (duple 2 3)
+      '(3 3))
+(test (duple 4 '(ha ha))
+      '((ha ha) (ha ha) (ha ha) (ha ha)))
+(test (duple 0 '(word))
+      '())
